@@ -12,11 +12,6 @@ FC = gfortran -fcray-pointer
 FC = gcc
 AR = ar ruc
 
-###
-# export PETSC_DIR=/home/daniel/petsc-3.14.2
-# include ../makefile
-###
-
 ########################################################################
 # Compiling and linking options
 ########################################################################

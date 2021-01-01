@@ -12,7 +12,13 @@
 #
 # The following variable must either be a path to petsc.pc or just "petsc" if petsc.pc
 # has been installed to a system location or can be found in PKG_CONFIG_PATH.
+
+export PETSC_DIR=/home/daniel/petsc-3.14.2
+export PETSC_ARCH=arch-linux-c-debug
 petsc.pc := $(PETSC_DIR)/$(PETSC_ARCH)/lib/pkgconfig/petsc.pc
+
+# petsc.pc := /home/daniel/petsc-3.14.2/arch-linux-c-debug/lib/pkgconfig/petsc.pc
+
 
 # Additional libraries that support pkg-config can be added to the list of PACKAGES below.
 PACKAGES := $(petsc.pc)
@@ -64,3 +70,6 @@ print:
 # a target-specific variable by uncommenting the line below.
 #
 # app : LDLIBS += -lstdc++
+
+cleanex:
+	rm -f ex1
