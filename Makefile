@@ -1,3 +1,12 @@
+# PETSc paths and packages
+export PETSC_DIR = /home/daniel/petsc-3.14.2
+export PETSC_ARCH = arch-linux-c-debug
+petsc.pc := $(PETSC_DIR)/$(PETSC_ARCH)/lib/pkgconfig/petsc.pc
+# petsc.pc := /home/daniel/petsc-3.14.2/arch-linux-c-debug/lib/pkgconfig/petsc.pc
+
+# Additional libraries that support pkg-config can be added to the list of PACKAGES below.
+PACKAGES := $(petsc.pc)
+
 ########################################################################
 # Compiler and external dependences
 ########################################################################
@@ -11,6 +20,20 @@ CC = gcc
 FC = gfortran -fcray-pointer
 FC = gcc
 AR = ar ruc
+
+# Compiler for PETSc
+# CC := $(shell pkg-config --variable=ccompiler $(PACKAGES))
+CXX := $(shell pkg-config --variable=cxxcompiler $(PACKAGES))
+# FC := $(shell pkg-config --variable=fcompiler $(PACKAGES))
+CFLAGS_OTHER := $(shell pkg-config --cflags-only-other $(PACKAGES))
+CFLAGS := $(shell pkg-config --variable=cflags_extra $(PACKAGES)) $(CFLAGS_OTHER)
+CXXFLAGS := $(shell pkg-config --variable=cxxflags_extra $(PACKAGES)) $(CFLAGS_OTHER)
+FFLAGS := $(shell pkg-config --variable=fflags_extra $(PACKAGES))
+CPPFLAGS := $(shell pkg-config --cflags-only-I $(PACKAGES))
+LDFLAGS := $(shell pkg-config --libs-only-L --libs-only-other $(PACKAGES))
+LDFLAGS += $(patsubst -L%, $(shell pkg-config --variable=ldflag_rpath $(PACKAGES))%, $(shell pkg-config --libs-only-L $(PACKAGES)))
+LDLIBS := $(shell pkg-config --libs-only-l $(PACKAGES)) -lm
+
 
 ########################################################################
 # Compiling and linking options
@@ -94,7 +117,7 @@ testmat:
 # Clean up
 ########################################################################
 
-.PHONY : clean allclean # 伪目标, 不生成文件
+.PHONY : clean allclean # 伪目标, 不生成文件, 避免和其他 文件重名
 
 clean:
 	rm -f main/*.o
