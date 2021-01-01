@@ -21,15 +21,14 @@ PACKAGES := $(petsc.pc)
 # FC = gcc
 # AR = ar ruc
 
-FC = gcc
-CC = gcc
+# FC = gcc
+# CC = gcc
 AR = ar ruc
 
-
 # Compiler for PETSc
-# CC := $(shell pkg-config --variable=ccompiler $(PACKAGES))
+CC := $(shell pkg-config --variable=ccompiler $(PACKAGES))
 CXX := $(shell pkg-config --variable=cxxcompiler $(PACKAGES))
-# FC := $(shell pkg-config --variable=fcompiler $(PACKAGES))
+FC := $(shell pkg-config --variable=fcompiler $(PACKAGES))
 CFLAGS_OTHER := $(shell pkg-config --cflags-only-other $(PACKAGES))
 CFLAGS := $(shell pkg-config --variable=cflags_extra $(PACKAGES)) $(CFLAGS_OTHER)
 CXXFLAGS := $(shell pkg-config --variable=cxxflags_extra $(PACKAGES)) $(CFLAGS_OTHER)
@@ -102,9 +101,23 @@ TESTMATPROG = $(AMGLIB) main/testmat.o
 # Link
 ########################################################################
 
+
+########################################################################
+# From PETSc
+% : %.F90
+	$(LINK.F) -o $@ $^ $(LDLIBS)
+%.o: %.F90
+	$(COMPILE.F) $(OUTPUT_OPTION) $<
+% : %.cxx
+	$(LINK.cc) -o $@ $^ $(LDLIBS)
+%.o: %.cxx
+	$(COMPILE.cc) $(OUTPUT_OPTION) $<
+########################################################################
+
+
 all: $(ALLPROG)
 
-Default: test
+Default: test # bugs here?
 
 $(AMGLIB): $(OBJSC) $(OBJSF)
 	ranlib $(AMGLIB)
