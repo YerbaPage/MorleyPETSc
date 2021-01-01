@@ -69,5 +69,5 @@ print:
 #
 # app : LDLIBS += -lstdc++
 
-cleanex1:
-	rm -f ex1
+clean:
+	rm -f ex
