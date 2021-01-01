@@ -1,0 +1,61 @@
+% input parameters
+% lines starting with %, [, or | are comments
+% must have spaces around the equal sign "="
+
+print_level    = 2
+
+nu             = 0.3
+lambda         = 10
+mu             = 0
+t              = 0
+alpha1         = 1    % power of penalty parameter eta1
+alpha2         = -2   % power of penalty parameter eta2
+alpha3         = -3   % power of penalty parameter eta3
+beta1          = 0    % coefficient of penalty parameter eta1
+beta2          = 1    % coefficient of penalty parameter eta2
+beta3          = 1    % coefficient of penalty parameter eta3
+CglevelNum     = 4    % geometric level number of coarse grid 
+FglevelNum     = 6    % geometric level number of fine grid 
+glevelNum      = 4
+cDOP           = 1    % degree of polynomial on coarse grid
+rDOP           = 1    % degree of polynomial for lifting operator, only take value 1,2,3 now
+dop1           = 4    % degree of polynomial for stress tensor
+dop2           = 2    % degree of polynomial for displacement 
+dop3           = -1    % degree of polynomial for trace of normal derivative of displacement 
+dop4           = -1    % degree of polynomial for trace of displacement 
+
+domain_num     = 1    % Domain number: 1 unitsquare | 2 square | 3 adapmesh | 4 unstructuredmesh1 | 5 LDomain | 6 rotLDomain | 7 tempLDomain
+problem_num    = 1    % Problem number: 1 biharmonic | 2 Kirchhoff plate
+variationalform_type = 1  % 1 original Kirchhoff plate | 2 Poisson-StokesDiv-Poisson | 3 Poisson-StokesRot-Poisson | 4 Poisson-Elasticity-Poisson
+
+itsolver_type  = 1     % Solver type: Stokes: 1 ABFP; 2 Diagonal ASP | Elasticity: 1 ABFP; 2 Diagonal ASP 
+itsolver_tol   = 1e-8 % Solver tolerance
+itsolver_maxit = 150000   % Maximal iteration number
+itsolver_restart = 50   % Restart number
+stress_fem_type      = 1  % type of fem space for stress
+
+precond_type    = 2   % 1 additive | 2 multiplicative 
+precond_scale1  = 1   % scale for the first preconditioned variable in precondition 
+precond_scale2  = 2  % scale for the second preconditioned variable in precondition
+
+smoother        = GS  % GS | JACOBI | SGS | MSWZ | ASWZ | SMSWZ
+schwarz_type    = 1   % 1 vertex | 2 edge | 3 face or elment in 2d | 4 edge-vertex | 5 element-vertex
+smooth_iter     = 3
+	
+MG_tol          = 1e-8
+MG_maxit        = 1
+MG_smoother     = GS  % GS | JACOBI | SGS | MSWZ | ASWZ
+MG_smooth_iter  = 1
+
+AMG_levels     = 20
+AMG_coarsening_type      = 1
+AMG_interpolation_type   = 1   % 1 standard | 2 energy min in FOR | 3 energy min in C
+AMG_coarse_dof           = 50
+	
+AMG_strong_threshold     = 0.6
+AMG_max_row_sum          = 0.9
+AMG_truncation_threshold = 0.4
+
+AFEM_tol = 1e-20;
+AFEM_maxit = 30;
+AFEM_mark_threshold = 0.1;
