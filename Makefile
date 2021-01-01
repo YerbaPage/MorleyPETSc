@@ -12,6 +12,11 @@ FC = gfortran -fcray-pointer
 FC = gcc
 AR = ar ruc
 
+###
+# export PETSC_DIR=/home/daniel/petsc-3.14.2
+# include ../makefile
+###
+
 ########################################################################
 # Compiling and linking options
 ########################################################################
@@ -94,7 +99,7 @@ testmat:
 # Clean up
 ########################################################################
 
-.PHONY : clean allclean
+.PHONY : clean allclean # 伪目标, 不生成文件
 
 clean:
 	rm -f main/*.o
