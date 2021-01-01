@@ -10,16 +10,21 @@ PACKAGES := $(petsc.pc)
 ########################################################################
 # Compiler and external dependences
 ########################################################################
-CC = cc
-FC = ftn
-CC = pgcc
-FC = pgf90
-CC = icc
-FC = ifort -nofor-main
-CC = gcc
-FC = gfortran -fcray-pointer
+# CC = cc
+# FC = ftn
+# CC = pgcc
+# FC = pgf90
+# CC = icc
+# FC = ifort -nofor-main
+# CC = gcc
+# FC = gfortran -fcray-pointer
+# FC = gcc
+# AR = ar ruc
+
 FC = gcc
+CC = gcc
 AR = ar ruc
+
 
 # Compiler for PETSc
 # CC := $(shell pkg-config --variable=ccompiler $(PACKAGES))
