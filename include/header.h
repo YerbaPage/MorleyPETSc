@@ -353,7 +353,7 @@ typedef struct dIJmat{
 	//! number of nonzero entries
 	int nnz;   
 	//! integer array of row indices, the size is nnz
-	int *I;
+	int *I; 
 	//! integer array of column indices, the size is nnz
 	int *J;   
 	//! nonzero entries of A
