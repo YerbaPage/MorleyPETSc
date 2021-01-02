@@ -109,7 +109,7 @@ TESTMATPROG = $(AMGLIB) main/testmat.o
 # %.o: %.F90
 # 	$(COMPILE.F) $(OUTPUT_OPTION) $<
 % : %.cxx
-	$(LINK.cc) -o $@ $^ $(LDLIBS)
+	$(LINK.cc) $^ $(LDLIBS) -o $@
 %.o: %.cxx
 	$(COMPILE.cc) $(OUTPUT_OPTION) $<
 ########################################################################
