@@ -23,7 +23,7 @@ PACKAGES := $(petsc.pc)
 
 # FC = gcc
 # CC = gcc
-AR = ar ruc
+AR = ar rc # Removed u to avoid warnings
 
 # Compiler for PETSc
 CC := $(shell pkg-config --variable=ccompiler $(PACKAGES))
