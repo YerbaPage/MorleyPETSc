@@ -215,7 +215,7 @@ typedef struct EDGE{
 	int row;	  
 	/** number of columns */
 	int col;	
-	/** the first two columns store the two vertice, the third and fourth columns store the affiliated elements£¬
+	/** the first two columns store the two vertice, the third and fourth columns store the affiliated elementsï¿½ï¿½
         the fourth column stores -1 if the edge is on boundary */
 	int **val;
 	/** sizes of the matrix entries*/
@@ -351,11 +351,11 @@ typedef struct dIJmat{
 	//! column of matrix A, n
 	int col;   
 	//! number of nonzero entries
-	int nnz;
+	int nnz;   
 	//! integer array of row indices, the size is nnz
-	int *I;   
+	int *I;
 	//! integer array of column indices, the size is nnz
-	int *J;    
+	int *J;   
 	//! nonzero entries of A
 	double *val;
 }dIJmat;

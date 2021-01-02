@@ -102,7 +102,6 @@ TESTMATPROG = $(AMGLIB) main/testmat.o
 # Link
 ########################################################################
 
-# Q: 1. LINK.F 哪里来的 2. 下面的编译
 ########################################################################
 # From PETSc
 # % : %.F90
@@ -124,12 +123,21 @@ $(AMGLIB): $(OBJSC) $(OBJSF)
 	ar -s $(AMGLIB)
 	# ranlib $(AMGLIB)
 
+# original:
+# test:
+# 	$(CC) $(CFLAGS) -c main/test.c  -o main/test.o
+# 	$(FC) main/test.o $(AMGLIB) $(FLFLAGS) -o test.ex
+
+# testmat: 
+# 	$(CC) $(CFLAGS) -c main/testmat.c  -o main/testmat.o
+# 	$(FC) main/testmat.o $(AMGLIB) $(FLFLAGS) -o testmat.ex
+
 test:
-	$(CC) $(CFLAGS) -c main/test.c  -o main/test.o
+	$(CC) $(CFLAGS) -c main/test.c -lpetsc -lm -o main/test.o
 	$(FC) main/test.o $(AMGLIB) $(FLFLAGS) -o test.ex
 
 testmat: 
-	$(CC) $(CFLAGS) -c main/testmat.c  -o main/testmat.o
+	$(CC) $(CFLAGS) -c main/testmat.c -lpetsc -lm -o main/testmat.o
 	$(FC) main/testmat.o $(AMGLIB) $(FLFLAGS) -o testmat.ex
 
 
