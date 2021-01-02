@@ -120,7 +120,8 @@ all: $(ALLPROG)
 Default: test # bugs here?
 
 $(AMGLIB): $(OBJSC) $(OBJSF)
-	ranlib $(AMGLIB)
+	ar -s $(AMGLIB)
+	# ranlib $(AMGLIB)
 
 test: 
 	$(CC) $(CFLAGS) -c main/test.c  -o main/test.o
