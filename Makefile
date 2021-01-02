@@ -23,7 +23,7 @@ PACKAGES := $(petsc.pc)
 
 # FC = gcc
 # CC = gcc
-AR = ar rc # Removed u to avoid warnings
+AR = ar rc # Removed u(only replace files that are newer than current archive contents) to avoid warnings
 
 # Compiler for PETSc
 CC := $(shell pkg-config --variable=ccompiler $(PACKAGES))
@@ -48,7 +48,7 @@ LDLIBS := $(shell pkg-config --libs-only-l $(PACKAGES)) -lm
 #COPTS     = -g -O3
 
 COPTS     = $(BOPT)
-CINCLUDES = -I./include
+CINCLUDES = -I ./include
 CDEFS     = 
 CFLAGS    = $(COPTS) $(CINCLUDES) $(CDEFS)
 
