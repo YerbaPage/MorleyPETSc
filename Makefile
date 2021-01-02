@@ -104,10 +104,10 @@ TESTMATPROG = $(AMGLIB) main/testmat.o
 # Q: 1. LINK.F 哪里来的 2. 下面的编译
 ########################################################################
 # From PETSc
-% : %.F90
-	$(LINK.F) -o $@ $^ $(LDLIBS)
-%.o: %.F90
-	$(COMPILE.F) $(OUTPUT_OPTION) $<
+# % : %.F90
+# 	$(LINK.F) -o $@ $^ $(LDLIBS)
+# %.o: %.F90
+# 	$(COMPILE.F) $(OUTPUT_OPTION) $<
 % : %.cxx
 	$(LINK.cc) -o $@ $^ $(LDLIBS)
 %.o: %.cxx

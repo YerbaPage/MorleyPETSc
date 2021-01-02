@@ -4,7 +4,7 @@
 # source file and can be easily modified to compile multi-file applications.
 # It relies on pkg_config tool, and PETSC_DIR and PETSC_ARCH variables.
 # Copy this file to your source directory as "Makefile" and modify as needed.
-#
+#git
 # For example - a single source file can be compiled with:
 #
 #  $ cd src/snes/tutorials/
@@ -47,10 +47,10 @@ print:
 # Many suffixes are covered by implicit rules, but you may need to write custom rules
 # such as these if you use suffixes that do not have implicit rules.
 # https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html#Catalogue-of-Rules
-% : %.F90
-	$(LINK.F) -o $@ $^ $(LDLIBS)
-%.o: %.F90
-	$(COMPILE.F) $(OUTPUT_OPTION) $<
+# % : %.F90
+# 	$(LINK.F) -o $@ $^ $(LDLIBS)
+# %.o: %.F90
+# 	$(COMPILE.F) $(OUTPUT_OPTION) $<
 % : %.cxx
 	$(LINK.cc) -o $@ $^ $(LDLIBS)
 %.o: %.cxx
