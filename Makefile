@@ -123,7 +123,7 @@ $(AMGLIB): $(OBJSC) $(OBJSF)
 	ar -s $(AMGLIB)
 	# ranlib $(AMGLIB)
 
-test: 
+test:
 	$(CC) $(CFLAGS) -c main/test.c  -o main/test.o
 	$(FC) main/test.o $(AMGLIB) $(FLFLAGS) -o test.ex
 
@@ -149,6 +149,9 @@ allclean:
 	rm -f *~
 	rm -f main/*.o
 	rm -f *.ex
+
+cleanex:
+	rm -rf ex
 
 .SUFFIXES: .c .for .f .o
 
