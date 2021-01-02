@@ -51,10 +51,10 @@ print:
 # 	$(LINK.F) -o $@ $^ $(LDLIBS)
 # %.o: %.F90
 # 	$(COMPILE.F) $(OUTPUT_OPTION) $<
-% : %.cxx
-	$(LINK.cc) $^ $(LDLIBS) -o $@
-%.o: %.cxx
-	$(COMPILE.cc) $(OUTPUT_OPTION) $<
+# % : %.cxx
+# 	$(LINK.cc) $^ $(LDLIBS) -o $@
+# %.o: %.cxx
+# 	$(COMPILE.cc) $(OUTPUT_OPTION) $<
 
 # For a multi-file case, suppose you have the source files a.F90, b.c, and c.cxx
 # (with a program statement appearing in a.F90 or main() appearing in the C or

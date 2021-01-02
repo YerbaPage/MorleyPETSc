@@ -108,10 +108,10 @@ TESTMATPROG = $(AMGLIB) main/testmat.o
 # 	$(LINK.F) -o $@ $^ $(LDLIBS)
 # %.o: %.F90
 # 	$(COMPILE.F) $(OUTPUT_OPTION) $<
-% : %.cxx
-	$(LINK.cc) $^ $(LDLIBS) -o $@
-%.o: %.cxx
-	$(COMPILE.cc) $(OUTPUT_OPTION) $<
+# % : %.cxx
+# 	$(LINK.cc) $^ $(LDLIBS) -o $@
+# %.o: %.cxx
+# 	$(COMPILE.cc) $(OUTPUT_OPTION) $<
 ########################################################################
 
 
