@@ -48,7 +48,8 @@ LDLIBS := $(shell pkg-config --libs-only-l $(PACKAGES)) -lm
 #COPTS     = -g -O3
 
 COPTS     = $(BOPT)
-CINCLUDES = -I ./include
+# CINCLUDES = -I./include
+CINCLUDES = -I./include  -I/home/daniel/petsc-3.14.2/arch-linux-c-debug/include -I/home/daniel/petsc-3.14.2/include -L/home/daniel/petsc-3.14.2/arch-linux-c-debug/lib  -Wl,-rpath,/home/daniel/petsc-3.14.2/arch-linux-c-debug/lib
 CDEFS     = 
 CFLAGS    = $(COPTS) $(CINCLUDES) $(CDEFS)
 
@@ -149,9 +150,7 @@ allclean:
 	rm -f *~
 	rm -f main/*.o
 	rm -f *.ex
-
-cleanex:
-	rm -rf ex
+	rm -f main/ex
 
 .SUFFIXES: .c .for .f .o
 
