@@ -2342,7 +2342,7 @@ int dIJtoCSR(dIJmat *A, dCSRmat *B)
 	
 	for (i=0;i<m;i++) iz[i]=0;
 	
-	for (i=0;i<nnz;i++) iz[A->I[i]]++; // number of nonzeros in each row
+	for (i=0;i<nnz;i++) iz[A->I_dij[i]]++; // number of nonzeros in each row
 	
 	B->row=m; B->col=n; B->nnz=nnz;
 	
@@ -2373,12 +2373,12 @@ int dCSRtoIJ(dCSRmat *A, dIJmat *B)
 {
 	int i, j, m=A->row, n=A->col, nnz=A->nnz;
 	
-	B->I=calloc(nnz,sizeof(int));
+	B->I_dij=calloc(nnz,sizeof(int));
 	B->J=calloc(nnz,sizeof(int));
 	B->val=calloc(nnz,sizeof(double));
 	
 	for (i=0;i<m;i++) {
-		for (j=A->IA[i];j<A->IA[i+1];j++) B->I[j]=i;
+		for (j=A->IA[i];j<A->IA[i+1];j++) B->I_dij[j]=i;
 	}
 	
 	for (i=0;i<nnz;i++) {

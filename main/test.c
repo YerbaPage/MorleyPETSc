@@ -15,12 +15,15 @@
 /*! \file test.c
  *  \brief Test Function for Solvers
  */
+// static char help[] = "Solves a linear system with KSP.\n\n";
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+
 #include <petscksp.h>
+#include <petscvec.h>
 
 #include "header.h"
 #include "matvec.h"
@@ -31,7 +34,7 @@
  *
  * This is the main function for test purpose. It contains five steps:
  */
-int main(int argc, const char * argv[])
+int main(int argc, const char * argv[], char **args)
 {
 //	dCSRmat A[4];
 //	dvector b[2], uh[2], _uh[2];
@@ -153,4 +156,15 @@ int main(int argc, const char * argv[])
 	free_elementDOF(&elementDOF);
 
 	return 1;
+
+    // Vec x, b, u;    /* approx solution, RHS, exact solution */
+    // Mat A;          /* linear system matrix */
+    // KSP ksp;        /* linear solver context */
+    // PC pc;          /* preconditioner context */
+    // PetscReal norm; /* norm of solution error */
+    // PetscErrorCode ierr;
+    // PetscInt k, n = 100, col[3], its;
+    // PetscMPIInt size;
+    // PetscScalar value[3];
+ 
 }

@@ -244,20 +244,20 @@ int read_IJ_matrix(char *filename, dCSRmat *A)
 	fscanf(fp,"%d %d",&l,&nnz);
 	
 	Atmp.row=l; Atmp.col=l; Atmp.nnz=nnz;
-	Atmp.I=(int *)calloc(nnz, sizeof(int)); 
+	Atmp.I_dij=(int *)calloc(nnz, sizeof(int)); 
 	Atmp.J=(int *)calloc(nnz, sizeof(int)); 
 	Atmp.val=(double *)calloc(nnz, sizeof(double)); 
 	
 	k = 0;
 	while ( fscanf(fp, "%d %d %le", &i, &j, &value) != EOF ) {
-		Atmp.I[k]=i; Atmp.J[k]=j; Atmp.val[k]=value; k++;
+		Atmp.I_dij[k]=i; Atmp.J[k]=j; Atmp.val[k]=value; k++;
 	}
 	
 	dIJtoCSR(&Atmp,A);
 	
 	fclose(fp);
 	
-	free(Atmp.I); free(Atmp.J); free(Atmp.val);
+	free(Atmp.I_dij); free(Atmp.J); free(Atmp.val);
 	
 	return 1;
 }
